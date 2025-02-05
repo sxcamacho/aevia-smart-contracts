@@ -1,11 +1,23 @@
 # Aevia Protocol
 
-Try running some of the following tasks:
+# install dependencies
+npm install or yarn install
 
-```shell
+# show help
 npx hardhat help
+
+# compile
+npx hardhat compile
+
+# execute tests
 npx hardhat test
+
+# execute test with gas report
 REPORT_GAS=true npx hardhat test
+
+# run local node
 npx hardhat node
-npx hardhat run scripts/deploy.ts --network sepolia
+
+# Deploy AeviaProtocol
+npx hardhat ignition deploy ignition/modules/AeviaProtocol.ts --network sepolia --verify
 ```

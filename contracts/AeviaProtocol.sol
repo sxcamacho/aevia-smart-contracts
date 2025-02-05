@@ -6,14 +6,17 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 import "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
+import "@openzeppelin/contracts/access/AccessControl.sol";
 
-contract AeviaProtocol is EIP712 {
+contract AeviaProtocol is EIP712, AccessControl {
+    bytes32 public constant OPERATOR_ROLE = keccak256("OPERATOR_ROLE");
+
     enum TokenType { ERC20, ERC721, ERC1155 }
 
     using ECDSA for bytes32;
 
     // Mapping to track revoked legacies
-    mapping(address => mapping(uint256 => bool)) public revokedLegacies;
+    mapping(address => mapping(uint256 => bool)) private revokedLegacies;
 
     // Type definition and its fields for EIP-712
     bytes32 public constant LEGACY_TYPEHASH = keccak256(
@@ -35,7 +38,9 @@ contract AeviaProtocol is EIP712 {
         uint256 indexed legacyId
     );
 
-    constructor() EIP712("AeviaProtocol", "1.0.0") {}
+    constructor() EIP712("AeviaProtocol", "1.0.0") {
+        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+    }
 
     function executeLegacy(
         uint256 legacyId,
@@ -46,7 +51,7 @@ contract AeviaProtocol is EIP712 {
         address from,
         address to,
         bytes memory signature
-    ) external {
+    ) external onlyRole(OPERATOR_ROLE) {
         // Check if legacy is revoked
         require(!revokedLegacies[from][legacyId], "Legacy has been executed or revoked");
 
@@ -130,5 +135,13 @@ contract AeviaProtocol is EIP712 {
     // Helper function to check if a legacy is revoked
     function isLegacyRevoked(address from, uint256 legacyId) external view returns (bool) {
         return revokedLegacies[from][legacyId];
+    }
+
+    function addOperator(address operator) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        _grantRole(OPERATOR_ROLE, operator);
+    }
+
+    function removeOperator(address operator) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        _revokeRole(OPERATOR_ROLE, operator);
     }
 } 
