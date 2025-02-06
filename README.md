@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="aevia.png" alt="Aevia Image"/>
+</p>
+
 # Aevia Protocol
 
 The Aevia Protocol is a smart contract that enables secure token transfers through signed messages. It allows users to pre-authorize token transfers that can be executed later by authorized operators. This is particularly useful for inheritance planning, scheduled transfers, or any scenario where you want to prepare a transfer in advance.
@@ -97,6 +101,8 @@ npx hardhat ignition deploy ignition/modules/AeviaProtocol.ts --network sepolia 
 
 Create a `.env` file in the root directory with the following variables:
 
+⚠️ Never commit your `.env` file or expose your private keys
+
 #### Network Configuration
 ```
 INFURA_SEPOLIA_URL=       # Infura URL for Sepolia network
@@ -116,5 +122,3 @@ ETHERSCAN_API_KEY=        # API key for Etherscan
 PRIVATE_KEY=              # Deployer's private key (without 0x prefix)
 OPERATOR_PRIVATE_KEY=     # Operator's private key (without 0x prefix)
 ```
-
-> ⚠️ Never commit your `.env` file or expose your private keys
