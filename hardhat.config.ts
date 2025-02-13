@@ -34,13 +34,19 @@ const config: HardhatUserConfig = {
       url: process.env.INFURA_SEPOLIA_URL,
       accounts: [process.env.PRIVATE_KEY ?? ""],
       chainId: 11155111
+    },
+    modeSepolia: {
+      url: process.env.INFURA_MODE_URL,
+      accounts: [process.env.PRIVATE_KEY ?? ""],
+      chainId: 919
     }
   },
   etherscan: {
     apiKey: {
       sepolia: process.env.ETHERSCAN_API_KEY ?? "",
       mantleSepolia: process.env.MANTLESCAN_API_KEY ?? "",
-      baseSepolia: process.env.BASESCAN_API_KEY ?? ""
+      baseSepolia: process.env.BASESCAN_API_KEY ?? "",
+      modeSepolia: process.env.MODESCAN_API_KEY ?? ""
     },
     customChains: [
       {
@@ -57,6 +63,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api-sepolia.basescan.org/api",
           browserURL: "https://sepolia.basescan.org"
+        }
+      },
+      {
+        network: "modeSepolia",
+        chainId: 919,
+        urls: {
+          apiURL: "https://api.routescan.io/v2/network/testnet/evm/919/etherscan",
+          browserURL: "https://testnet.modescan.io"
         }
       }
     ]
