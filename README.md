@@ -105,18 +105,20 @@ Create a `.env` file in the root directory with the following variables:
 
 #### Network Configuration
 ```
-SEPOLIA_NODE_URL=         # Infura URL for Sepolia network
-MANTLE_NODE_URL=          # Infura URL for Mantle testnet
-BASE_NODE_URL=            # Infura URL for Base testnet
-MODE_NODE_URL=            # Infura URL for Mode testnet
-FUJI_NODE_URL=            # Infura URL for Fuji network
+ETHEREUM_NODE_URL=         # Infura URL for Ethereum mainnet
+SEPOLIA_NODE_URL=          # Infura URL for Sepolia network
+MANTLE_SEPOLIA_NODE_URL=   # Infura URL for Mantle testnet
+MANTLE_NODE_URL=           # Infura URL for Mantle mainnet
+BASE_NODE_URL=             # Infura URL for Base mainnet
+MODE_NODE_URL=             # Infura URL for Mode mainnet
+FUJI_NODE_URL=             # Infura URL for Fuji network
 ```
 
 #### API Keys
 ```
-MANTLESCAN_API_KEY=       # API key for Mantle block explorer
-BASESCAN_API_KEY=         # API key for Base block explorer
-ETHERSCAN_API_KEY=        # API key for Etherscan
+MANTLESCAN_API_KEY=        # API key for Mantle block explorer
+BASESCAN_API_KEY=          # API key for Base block explorer
+ETHERSCAN_API_KEY=         # API key for Etherscan
 MODESCAN_API_KEY=          # API key for Mode block explorer
 SNOWTRACE_API_KEY=         # API key for Snowtrace
 ```

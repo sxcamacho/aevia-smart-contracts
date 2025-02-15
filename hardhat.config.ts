@@ -25,8 +25,13 @@ const config: HardhatUserConfig = {
       accounts: [process.env.PRIVATE_KEY ?? ""],
       chainId: 1
     },
-    mantleSepolia: {
+    mantle: {
       url: process.env.MANTLE_NODE_URL,
+      accounts: [process.env.PRIVATE_KEY ?? ""],
+      chainId: 5000
+    },
+    mantleSepolia: {
+      url: process.env.MANTLE_SEPOLIA_NODE_URL,
       accounts: [process.env.PRIVATE_KEY ?? ""],
       chainId: 5003
     },
@@ -55,6 +60,7 @@ const config: HardhatUserConfig = {
     apiKey: {
       ethereum: process.env.ETHERSCAN_API_KEY ?? "",
       sepolia: process.env.ETHERSCAN_API_KEY ?? "",
+      mantle: process.env.MANTLESCAN_API_KEY ?? "",
       mantleSepolia: process.env.MANTLESCAN_API_KEY ?? "",
       baseSepolia: process.env.BASESCAN_API_KEY ?? "",
       modeSepolia: process.env.MODESCAN_API_KEY ?? "",
@@ -67,6 +73,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api.etherscan.io/api",
           browserURL: "https://etherscan.io"
+        }
+      },
+      {
+        network: "mantle",
+        chainId: 5000,
+        urls: {
+          apiURL: "https://api.mantle.xyz/api",
+          browserURL: "https://mantle.xyz/"
         }
       },
       {
