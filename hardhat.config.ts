@@ -20,35 +20,55 @@ const config: HardhatUserConfig = {
     artifacts: "./artifacts"
   },
   networks: {
+    ethereum: {
+      url: process.env.ETHEREUM_NODE_URL,
+      accounts: [process.env.PRIVATE_KEY ?? ""],
+      chainId: 1
+    },
     mantleSepolia: {
-      url: process.env.INFURA_MANTLE_URL,
+      url: process.env.MANTLE_NODE_URL,
       accounts: [process.env.PRIVATE_KEY ?? ""],
       chainId: 5003
     },
     baseSepolia: {
-      url: process.env.INFURA_BASE_URL,
+      url: process.env.BASE_NODE_URL,
       accounts: [process.env.PRIVATE_KEY ?? ""],
       chainId: 84532
     },
     sepolia: {
-      url: process.env.INFURA_SEPOLIA_URL,
+      url: process.env.SEPOLIA_NODE_URL,
       accounts: [process.env.PRIVATE_KEY ?? ""],
       chainId: 11155111
     },
     modeSepolia: {
-      url: process.env.INFURA_MODE_URL,
+      url: process.env.MODE_NODE_URL,
       accounts: [process.env.PRIVATE_KEY ?? ""],
       chainId: 919
+    },
+    fuji: {
+      url: process.env.FUJI_NODE_URL,
+      accounts: [process.env.PRIVATE_KEY ?? ""],
+      chainId: 43113
     }
   },
   etherscan: {
     apiKey: {
+      ethereum: process.env.ETHERSCAN_API_KEY ?? "",
       sepolia: process.env.ETHERSCAN_API_KEY ?? "",
       mantleSepolia: process.env.MANTLESCAN_API_KEY ?? "",
       baseSepolia: process.env.BASESCAN_API_KEY ?? "",
-      modeSepolia: process.env.MODESCAN_API_KEY ?? ""
+      modeSepolia: process.env.MODESCAN_API_KEY ?? "",
+      fuji: process.env.SNOWTRACE_API_KEY ?? ""
     },
     customChains: [
+      {
+        network: "ethereum",
+        chainId: 1,
+        urls: {
+          apiURL: "https://api.etherscan.io/api",
+          browserURL: "https://etherscan.io"
+        }
+      },
       {
         network: "mantleSepolia",
         chainId: 5003,
@@ -71,6 +91,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api.routescan.io/v2/network/testnet/evm/919/etherscan",
           browserURL: "https://testnet.modescan.io"
+        }
+      },
+      {
+        network: "fuji",
+        chainId: 43113,
+        urls: {
+          apiURL: "https://api-testnet.snowtrace.io/api",
+          browserURL: "https://testnet.snowtrace.io"
         }
       }
     ]

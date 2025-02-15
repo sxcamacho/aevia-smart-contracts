@@ -105,9 +105,11 @@ Create a `.env` file in the root directory with the following variables:
 
 #### Network Configuration
 ```
-INFURA_SEPOLIA_URL=       # Infura URL for Sepolia network
-INFURA_MANTLE_URL=        # Infura URL for Mantle testnet
-INFURA_BASE_URL=          # Infura URL for Base testnet
+SEPOLIA_NODE_URL=         # Infura URL for Sepolia network
+MANTLE_NODE_URL=          # Infura URL for Mantle testnet
+BASE_NODE_URL=            # Infura URL for Base testnet
+MODE_NODE_URL=            # Infura URL for Mode testnet
+FUJI_NODE_URL=            # Infura URL for Fuji network
 ```
 
 #### API Keys
@@ -115,6 +117,8 @@ INFURA_BASE_URL=          # Infura URL for Base testnet
 MANTLESCAN_API_KEY=       # API key for Mantle block explorer
 BASESCAN_API_KEY=         # API key for Base block explorer
 ETHERSCAN_API_KEY=        # API key for Etherscan
+MODESCAN_API_KEY=          # API key for Mode block explorer
+SNOWTRACE_API_KEY=         # API key for Snowtrace
 ```
 
 #### Private Keys
