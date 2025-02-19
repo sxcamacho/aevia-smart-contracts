@@ -79,8 +79,8 @@ const config: HardhatUserConfig = {
         network: "mantle",
         chainId: 5000,
         urls: {
-          apiURL: "https://api.mantle.xyz/api",
-          browserURL: "https://mantle.xyz/"
+          apiURL: "https://api.mantlescan.xyz/api",
+          browserURL: "https://mantlescan.xyz/"
         }
       },
       {
