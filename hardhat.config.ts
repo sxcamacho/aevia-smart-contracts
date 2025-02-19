@@ -54,6 +54,11 @@ const config: HardhatUserConfig = {
       url: process.env.FUJI_NODE_URL,
       accounts: [process.env.PRIVATE_KEY ?? ""],
       chainId: 43113
+    },
+    sonicTestnet: {
+      url: process.env.SONIC_TESTNET_NODE_URL,
+      accounts: [process.env.PRIVATE_KEY ?? ""],
+      chainId: 57054
     }
   },
   etherscan: {
@@ -64,9 +69,18 @@ const config: HardhatUserConfig = {
       mantleSepolia: process.env.MANTLESCAN_API_KEY ?? "",
       baseSepolia: process.env.BASESCAN_API_KEY ?? "",
       modeSepolia: process.env.MODESCAN_API_KEY ?? "",
-      fuji: process.env.SNOWTRACE_API_KEY ?? ""
+      fuji: process.env.SNOWTRACE_API_KEY ?? "",
+      sonicTestnet: process.env.SONICSCAN_API_KEY ?? ""
     },
     customChains: [
+      {
+        network: "sonicTestnet",
+        chainId: 57054,
+        urls: {
+          apiURL: "https://api-testnet.sonicscan.org/api",
+          browserURL: "https://testnet.sonicscan.org/"
+        }
+      },
       {
         network: "ethereum",
         chainId: 1,
